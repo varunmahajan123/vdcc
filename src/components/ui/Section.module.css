@@ -1,0 +1,11 @@
+.section {
+    padding: 5rem 0;
+}
+
+.primary {
+    background: var(--bg-primary);
+}
+
+.secondary {
+    background: var(--bg-secondary);
+}
