@@ -1,67 +1,93 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
+
+export const runtime = "nodejs";
+
+const INSTITUTE_CONTEXT = `
+Institute Name:
+Varun Dev Coaching Center (VDCC)
+
+Location:
+A1 West Kashmir Avenue, Amritsar, Punjab
+
+Contact:
+Phone: 9915255710
+Email: varundev26081982@gmail.com
+
+Classes Offered:
+• Playpen / Pre-Primary
+• Class 1–5 (All Subjects)
+• Class 6–8 (Maths & Science)
+• Class 9–10 (Board Exam Preparation)
+
+Teaching Philosophy:
+• Concept-based learning
+• Personalized attention
+• Experienced faculty
+• Regular assessments
+• Result-oriented preparation
+
+RULE:
+If user asks anything outside this scope,
+respond politely and suggest contacting the institute.
+`;
 
 export async function POST(req: Request) {
     try {
-        const apiKey = process.env.GEMINI_API_KEY?.trim();
+        const apiKey = process.env.GROQ_API_KEY;
 
         if (!apiKey) {
-            console.error("Gemini API Error: GEMINI_API_KEY is missing from environment variables.");
+            console.error("❌ GROQ_API_KEY missing");
             return NextResponse.json(
-                { reply: "Gemini API key missing" },
+                { success: false, reply: "AI service configuration error." },
                 { status: 500 }
             );
         }
 
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-001" });
+        const { message } = await req.json();
 
-        const body = await req.json();
-        const userMessage = body.message || "";
+        if (!message || typeof message !== "string") {
+            return NextResponse.json(
+                { success: false, reply: "Invalid message format." },
+                { status: 400 }
+            );
+        }
 
-        const context = `
-        You are the AI Assistant for Varun Dev Coaching Center (VDCC) in Amritsar.
-        Your goal is to answer visitor questions accurately using ONLY the information below.
-        Be polite, professional, and concise.
+        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${apiKey}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                model: "llama-3.1-8b-instant",
+                messages: [
+                    { role: "system", content: INSTITUTE_CONTEXT },
+                    { role: "user", content: message },
+                ],
+            }),
+        });
 
-        INSTITUTE CONTEXT:
-        - Name: Varun Dev Coaching Center (VDCC)
-        - Location: A1 West Kashmir Avenue, Amritsar, Punjab
-        - Contact: 9915255710, varundev26081982@gmail.com
-        - Classes Offered: Playpen / Pre-Primary to Class 10
-        - Programs:
-          * Playpen & Pre-Primary
-          * Primary Classes (1-5)
-          * Middle School (6-8)
-          * Secondary Classes (9-10)
-        - Vision: Empowering students with strong academic foundations, confidence, and a love for learning.
-        - Teaching Approach:
-          * Concept-based learning
-          * Personalized attention
-          * Small batch sizes
-          * Regular assessments
-          * Board exam preparation
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error("❌ Groq API Error:", errorText);
+            return NextResponse.json(
+                { success: false, reply: "Sorry, I am currently unavailable." },
+                { status: 500 }
+            );
+        }
 
-        RULES:
-        1. If asked about contact info, provide the phone and email above.
-        2. If asked about location, provide the Amritsar address.
-        3. If asked about classes, clarify that we cover Playpen to Class 10.
-        4. If asked about fees, schedule, or specific teachers, say: "Please contact the institute directly at 9915255710 for detailed information."
-        5. Do NOT make up information. If the answer is not here, refer them to the contact number.
-        `;
+        const data = await response.json();
+        const reply = data.choices[0]?.message?.content || "Sorry, I could not generate a response.";
 
-        const prompt = `${context}\n\nUser Question: ${userMessage}\n\nAnswer:`;
+        return NextResponse.json({
+            success: true,
+            reply,
+        });
 
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const text = response.text();
-
-        return NextResponse.json({ reply: text });
-
-    } catch (error: any) {
-        console.error("Gemini API Error:", error);
+    } catch (error) {
+        console.error("❌ Chatbot Error:", error);
         return NextResponse.json(
-            { reply: `API Error: ${error.message || error.toString()}` },
+            { success: false, reply: "Sorry, I am currently unavailable." },
             { status: 500 }
         );
     }

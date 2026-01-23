@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { siteConfig } from "@/data/site";
 import styles from "./Navbar.module.css";
 import { Menu, X } from "lucide-react";
@@ -10,14 +11,40 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const pathname = usePathname();
+    const router = useRouter();
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
         window.addEventListener("scroll", handleScroll);
+
+        // Initial check
+        checkAuth();
+
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // Check auth on route change
+    useEffect(() => {
+        checkAuth();
+        setIsOpen(false); // Close mobile menu on route change
+    }, [pathname]);
+
+    const checkAuth = () => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setIsLoggedIn(false);
+        router.push('/login');
+        router.refresh(); // Refresh to update server components if needed
+    };
 
     return (
         <header className={cn(styles.header, scrolled && styles.scrolled)}>
@@ -33,9 +60,25 @@ export function Navbar() {
                             {item.label}
                         </Link>
                     ))}
-                    <Link href="/login" className={styles.loginBtn}>
-                        Login
-                    </Link>
+
+                    {isLoggedIn ? (
+                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                            <Link href="/admin" className={styles.navLink}>
+                                Dashboard
+                            </Link>
+                            <button
+                                onClick={handleLogout}
+                                className={styles.loginBtn}
+                                style={{ border: 'none', cursor: 'pointer', fontSize: 'inherit' }}
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <Link href="/login" className={styles.loginBtn}>
+                            Login
+                        </Link>
+                    )}
                 </nav>
 
                 {/* Mobile Toggle */}
@@ -58,13 +101,36 @@ export function Navbar() {
                             {item.label}
                         </Link>
                     ))}
-                    <Link
-                        href="/login"
-                        className={styles.mobileNavLink}
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Login
-                    </Link>
+
+                    {isLoggedIn ? (
+                        <>
+                            <Link
+                                href="/admin"
+                                className={styles.mobileNavLink}
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Dashboard
+                            </Link>
+                            <button
+                                onClick={() => {
+                                    handleLogout();
+                                    setIsOpen(false);
+                                }}
+                                className={styles.mobileNavLink}
+                                style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', color: 'inherit', font: 'inherit' }}
+                            >
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <Link
+                            href="/login"
+                            className={styles.mobileNavLink}
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Login
+                        </Link>
+                    )}
                 </div>
             </div>
         </header>

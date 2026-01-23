@@ -2,6 +2,8 @@ import React from 'react';
 import { Section } from '@/components/shared/Section';
 import { Container } from '@/components/shared/Container';
 import { Typography } from '@/components/shared/Typography';
+import ContactForm from '@/components/contact/ContactForm';
+
 
 export default function ContactPage() {
     return (
@@ -28,21 +30,7 @@ export default function ContactPage() {
                         </div>
 
                         <div style={{ background: '#1e293b', padding: '2rem', borderRadius: '12px', border: '1px solid #334155' }}>
-                            <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                <div>
-                                    <label style={{ display: 'block', color: '#cbd5e1', marginBottom: '0.5rem', fontWeight: '500' }}>Name</label>
-                                    <input type="text" style={{ width: '100%', padding: '0.75rem', background: '#0f172a', border: '1px solid #334155', borderRadius: '6px', color: 'white' }} placeholder="Your Name" />
-                                </div>
-                                <div>
-                                    <label style={{ display: 'block', color: '#cbd5e1', marginBottom: '0.5rem', fontWeight: '500' }}>Email</label>
-                                    <input type="email" style={{ width: '100%', padding: '0.75rem', background: '#0f172a', border: '1px solid #334155', borderRadius: '6px', color: 'white' }} placeholder="your@email.com" />
-                                </div>
-                                <div>
-                                    <label style={{ display: 'block', color: '#cbd5e1', marginBottom: '0.5rem', fontWeight: '500' }}>Message</label>
-                                    <textarea rows={4} style={{ width: '100%', padding: '0.75rem', background: '#0f172a', border: '1px solid #334155', borderRadius: '6px', color: 'white' }} placeholder="How can we help?"></textarea>
-                                </div>
-                                <button type="button" style={{ background: '#0ea5e9', color: 'white', padding: '0.75rem', borderRadius: '6px', fontWeight: 'bold', marginTop: '1rem' }}>Send Message</button>
-                            </form>
+                            <ContactForm />
                         </div>
                     </div>
                 </Container>

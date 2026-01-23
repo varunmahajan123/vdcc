@@ -142,6 +142,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 .testimonialText {
@@ -150,16 +152,19 @@
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
     line-height: 1.8;
+    opacity: 1 !important;
 }
 
 .testimonialAuthor {
     font-weight: 600;
     color: var(--text-primary);
+    opacity: 1 !important;
 }
 
 .testimonialRole {
     font-size: 0.875rem;
     color: var(--accent-primary);
+    opacity: 1 !important;
 }
 
 /* CTA */

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './Courses.module.css';
 import { Typography } from '../shared/Typography';
 
@@ -23,7 +24,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ imageSrc, title, descrip
                 <Typography variant="body" className={styles.description}>
                     {description}
                 </Typography>
-                <button className={styles.button}>View Details</button>
+                <Link href="/contact" className={styles.button}>Enroll Now</Link>
             </div>
         </div>
     );
