@@ -16,6 +16,13 @@
     gap: 2.5rem;
 }
 
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 .card {
     border: 1px solid #e2e8f0;
     border-radius: 10px;
@@ -42,6 +49,12 @@
     align-items: center;
     overflow: hidden;
     position: relative;
+}
+
+@media (max-width: 640px) {
+    .imageWrapper {
+        height: 200px;
+    }
 }
 
 .image {
@@ -91,6 +104,15 @@
     transition: background-color 0.2s;
     font-weight: 600;
     font-size: 0.95rem;
+}
+
+@media (max-width: 640px) {
+    .button {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        /* larger touch target */
+    }
 }
 
 .button:hover {

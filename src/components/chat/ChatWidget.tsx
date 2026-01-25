@@ -26,6 +26,18 @@ export function ChatWidget() {
         }
     }, [messages, isOpen]);
 
+    // Lock body scroll when chat is open on mobile
+    useEffect(() => {
+        if (isOpen && window.innerWidth <= 768) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     const handleSend = async () => {
         if (!input.trim() || loading) return;
 

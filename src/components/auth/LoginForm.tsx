@@ -11,6 +11,18 @@ export default function LoginForm() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
 
+    // Common input style
+    const inputStyle = {
+        width: '100%',
+        padding: '1rem',
+        backgroundColor: '#0f172a',
+        border: '1px solid #334155',
+        borderRadius: '8px',
+        color: 'white',
+        outline: 'none',
+        fontSize: '16px'
+    };
+
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('loading');
@@ -86,15 +98,7 @@ export default function LoginForm() {
                     placeholder="Enter your email"
                     required
                     disabled={status === 'loading'}
-                    style={{
-                        width: '100%',
-                        padding: '0.75rem',
-                        backgroundColor: '#0f172a',
-                        border: '1px solid #334155',
-                        borderRadius: '6px',
-                        color: 'white',
-                        outline: 'none'
-                    }}
+                    style={inputStyle}
                 />
             </div>
 
@@ -108,15 +112,7 @@ export default function LoginForm() {
                     placeholder="Enter your password"
                     required
                     disabled={status === 'loading'}
-                    style={{
-                        width: '100%',
-                        padding: '0.75rem',
-                        backgroundColor: '#0f172a',
-                        border: '1px solid #334155',
-                        borderRadius: '6px',
-                        color: 'white',
-                        outline: 'none'
-                    }}
+                    style={inputStyle}
                 />
             </div>
 
@@ -134,8 +130,8 @@ export default function LoginForm() {
                 style={{
                     backgroundColor: status === 'loading' ? '#94a3b8' : '#0ea5e9',
                     color: 'white',
-                    padding: '0.75rem',
-                    borderRadius: '6px',
+                    padding: '1rem',
+                    borderRadius: '8px',
                     fontWeight: 'bold',
                     border: 'none',
                     cursor: status === 'loading' ? 'not-allowed' : 'pointer',

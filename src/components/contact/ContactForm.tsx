@@ -13,6 +13,18 @@ export default function ContactForm() {
     const [status, setStatus] = useState<FormStatus>('idle');
     const [errorMessage, setErrorMessage] = useState('');
 
+    // Common input style
+    const inputStyle = {
+        width: '100%',
+        padding: '1rem', // Larger touch target
+        background: '#0f172a',
+        border: '1px solid #334155',
+        borderRadius: '8px',
+        color: 'white',
+        fontSize: '16px' // Prevent zoom on iPhone
+    };
+
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData((prev) => ({
             ...prev,
@@ -63,7 +75,7 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     disabled={status === 'loading'}
-                    style={{ width: '100%', padding: '0.75rem', background: '#0f172a', border: '1px solid #334155', borderRadius: '6px', color: 'white' }}
+                    style={inputStyle}
                     placeholder="Your Name"
                 />
             </div>
@@ -77,7 +89,7 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     disabled={status === 'loading'}
-                    style={{ width: '100%', padding: '0.75rem', background: '#0f172a', border: '1px solid #334155', borderRadius: '6px', color: 'white' }}
+                    style={inputStyle}
                     placeholder="your@email.com"
                 />
             </div>
@@ -91,7 +103,7 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     disabled={status === 'loading'}
-                    style={{ width: '100%', padding: '0.75rem', background: '#0f172a', border: '1px solid #334155', borderRadius: '6px', color: 'white' }}
+                    style={inputStyle}
                     placeholder="How can we help?"
                 />
             </div>
@@ -114,8 +126,8 @@ export default function ContactForm() {
                 style={{
                     background: status === 'loading' ? '#94a3b8' : '#0ea5e9',
                     color: 'white',
-                    padding: '0.75rem',
-                    borderRadius: '6px',
+                    padding: '1rem',
+                    borderRadius: '8px',
                     fontWeight: 'bold',
                     marginTop: '1rem',
                     cursor: status === 'loading' ? 'not-allowed' : 'pointer',

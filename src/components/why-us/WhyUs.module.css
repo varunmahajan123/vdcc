@@ -16,6 +16,14 @@
     gap: 2.5rem;
 }
 
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+        /* Force single column on mobile */
+        gap: 2rem;
+    }
+}
+
 .card {
     padding: 3rem 2rem;
     border-radius: 16px;
@@ -60,6 +68,7 @@
     /* Light Neutral background */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     /* Soft shadow */
+    flex-shrink: 0;
 }
 
 .icon {
