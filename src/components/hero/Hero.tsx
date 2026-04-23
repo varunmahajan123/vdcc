@@ -1,71 +1,77 @@
 "use client";
 
 import React from 'react';
-import { Section } from '../shared/Section';
 import { Container } from '../shared/Container';
-import { Typography } from '../shared/Typography';
 import { Button } from '../ui/Button';
 import { brand } from '@/config/brand';
 import { motion } from 'framer-motion';
 
 export const Hero = () => {
     const waLink = `https://wa.me/91${brand.contact.primaryPhone.replace(/\D/g, "")}`;
-    const callLink = `tel:+91${brand.contact.primaryPhone.replace(/\D/g, "")}`;
 
     return (
-        <Section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden py-24 bg-bg-primary">
-            {/* Background elements */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-primary/10 rounded-full blur-[150px] opacity-60" />
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent-secondary/5 rounded-full blur-[120px] opacity-40" />
-                <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-            </div>
+        <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-bg-primary">
+            {/* Minimal dot pattern */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
 
             <Container className="relative z-20 w-full">
-                <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                <div className="flex flex-col items-center text-center max-w-3xl mx-auto px-4">
+                    {/* Admissions Label */}
+                    <motion.span
+                        initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="flex flex-col items-center"
+                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        className="inline-block text-[13px] font-bold tracking-[0.1em] uppercase text-[#2563EB] mb-5"
                     >
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-accent-primary font-bold tracking-[0.2em] uppercase text-[8px] sm:text-[9px] mb-5 shadow-xl backdrop-blur-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent-primary animate-pulse" />
-                            {brand.tagline}
-                        </div>
-                        <h1 className="text-[2.75rem] leading-[1] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-heading font-black text-white tracking-tighter mb-4">
-                            Securing Futures<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary via-white to-accent-secondary">
-                                Through Excellence.
-                            </span>
-                        </h1>
-                    </motion.div>
+                        Admissions Open 2026–27
+                    </motion.span>
 
-                    <motion.div
+                    {/* H1 */}
+                    <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] font-heading font-black text-white tracking-tight leading-[1.1] mb-5"
                     >
-                        <p className="text-sm md:text-base text-text-secondary leading-snug font-medium opacity-80 mb-8 max-w-lg mx-auto px-4">
-                            Amritsar's most trusted institute for rigorous mentoring and elite concept learning.
-                        </p>
-                    </motion.div>
+                        Securing Futures<br />Through Excellence.
+                    </motion.h1>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                    {/* Subtitle */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0"
+                        transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-[15px] md:text-base text-[#9ca3af] leading-relaxed font-medium mb-8 max-w-md mx-auto"
                     >
-                        <Button href={callLink} className="w-full sm:w-[180px] h-12 text-xs shadow-[0_5px_20px_rgba(56,189,248,0.2)] hover:shadow-[0_8px_25px_rgba(56,189,248,0.3)] hover:-translate-y-0.5 transition-all duration-300 rounded-xl">
+                        Amritsar's most trusted coaching institute.<br className="sm:hidden" /> From Playpen to Class 10.
+                    </motion.p>
+
+                    {/* CTA Buttons */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
+                    >
+                        <a
+                            href={waLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-auto inline-flex items-center justify-center bg-[#2563EB] text-white font-bold text-sm rounded-md px-7 py-3.5 hover:bg-[#1d4ed8] active:scale-[0.98] transition-all duration-200"
+                        >
                             Enroll Now
-                        </Button>
-                        <Button target="_blank" href={waLink} variant="outline" className="w-full sm:w-[180px] h-12 text-xs backdrop-blur-md hover:-translate-y-0.5 transition-all duration-300 rounded-xl">
+                        </a>
+                        <a
+                            href={waLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-auto inline-flex items-center justify-center border-2 border-white text-white font-bold text-sm rounded-md px-7 py-3.5 hover:bg-white hover:text-black active:scale-[0.98] transition-all duration-200"
+                        >
                             WhatsApp Us
-                        </Button>
+                        </a>
                     </motion.div>
                 </div>
             </Container>
-        </Section>
+        </section>
     );
 };
