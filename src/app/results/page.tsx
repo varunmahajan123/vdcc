@@ -47,7 +47,13 @@ export default function ResultsPage() {
                             Don't leave their fundamental development to chance. Secure an enrollment slot with Amritsar's most trusted faculty today.
                         </Typography>
                         
-                        <Button href={waLink} target="_blank" size="lg" variant="primary" className="w-full sm:w-auto px-10 bg-[#25D366] hover:bg-[#128C7E] shadow-[0_0_20px_rgba(37,211,102,0.3)] border-none text-base">
+                        <Button 
+                            href={waLink} 
+                            target="_blank" 
+                            size="lg" 
+                            variant="primary" 
+                            className="w-full sm:w-auto px-10 bg-[#25D366] hover:bg-[#128C7E] hover:text-white shadow-[0_0_20px_rgba(37,211,102,0.3)] border-none text-base"
+                        >
                             Message Us on WhatsApp
                         </Button>
                         <p className="mt-4 text-xs text-text-tertiary tracking-widest uppercase font-semibold">Immediate Response Guarantee</p>
