@@ -18,7 +18,7 @@ interface Resource {
 
 export default function ResourcesPage() {
     const router = useRouter();
-    const { isLoading: authLoading, isAuthenticated } = useAuthProtection();
+    const { loading: authLoading, authorized: isAuthenticated } = useAuthProtection();
     const [resources, setResources] = useState<Resource[]>([]);
     const [dataLoading, setDataLoading] = useState(true);
     const [error, setError] = useState('');
