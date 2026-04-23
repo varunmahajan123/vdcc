@@ -1,43 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  /* Dark Theme Core Colors */
-  --bg-primary: #0f172a;
-  /* Navy/Charcoal base */
-  --bg-secondary: #1e293b;
-  /* Card backgrounds */
-  --bg-tertiary: #334155;
-  /* Hover states/Inputs */
+  /* Dark Theme Core Colors - Refined for depth */
+  --bg-primary: #020617; 
+  --bg-secondary: #0f172a; 
+  --bg-tertiary: #1e293b; 
 
-  --text-primary: #f8fafc;
-  /* High contrast readable text */
-  --text-secondary: #cbd5e1;
-  /* Muted text */
-  --text-tertiary: #94a3b8;
-  /* Subtle text */
+  --text-primary: #f8fafc; 
+  --text-secondary: #94a3b8; 
+  --text-tertiary: #64748b; 
 
-  /* Accents */
-  --accent-primary: #0ea5e9;
-  /* Sky blue */
-  --accent-secondary: #14b8a6;
-  /* Teal */
-  --accent-cta: #f59e0b;
-  /* Amber/Orange for CTAs */
-  --accent-cta-hover: #d97706;
+  /* Accents - Premium Educational Palette */
+  --accent-primary: #38bdf8; 
+  --accent-secondary: #2dd4bf; 
+  --accent-cta: #fbbf24; 
+  --accent-cta-hover: #f59e0b; 
 
   /* Status */
-  --color-success: #22c55e;
+  --color-success: #10b981;
   --color-error: #ef4444;
 
-  /* Spacing & Borders */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  /* Spacing & Borders - Precise & Professional */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
   --radius-full: 9999px;
 
-  --border-color: #334155;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-muted: rgba(255, 255, 255, 0.04);
 
-  /* Animations */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
+  /* Animations - Subtle & Smooth */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Reset & Base Styles */
@@ -53,21 +50,34 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  background: var(--bg-primary);
 }
 
 body {
   color: var(--text-primary);
-  background: var(--bg-primary);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom selection color */
+::selection {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+}
+
+/* Accessibility - focus states */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 button {
@@ -75,8 +85,7 @@ button {
   font-family: inherit;
   border: none;
   background: none;
-  font-weight: 600;
-  /* Ensure buttons are not too thin */
+  transition: all var(--transition-fast);
 }
 
 ul,
@@ -84,15 +93,21 @@ ol {
   list-style: none;
 }
 
-/* Utility classes (since we aren't using Tailwind) */
+/* Utility classes - Refined for Professional Layouts */
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 .section {
-  padding: 4rem 1rem;
+  padding: 3rem 0; /* Tighter mobile vertical spacing */
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 6rem 0; /* Reduced from 8rem for tighter flow */
+  }
 }
 
 .text-center {
@@ -107,41 +122,32 @@ ol {
   color: var(--text-secondary);
 }
 
-.flex {
-  display: flex;
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
 }
 
-.flex-col {
-  flex-direction: column;
+.hover-lift {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
-.items-center {
-  align-items: center;
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
 }
 
-.justify-center {
-  justify-content: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.gap-2 {
-  gap: 0.5rem;
-}
-
-.gap-4 {
-  gap: 1rem;
-}
-
-.gap-8 {
-  gap: 2rem;
-}
-
-.grid {
-  display: grid;
-}
+/* Flex & Grid Utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-8 { gap: 2rem; }
+.grid { display: grid; }
 
 .hidden-mobile {
   display: block;

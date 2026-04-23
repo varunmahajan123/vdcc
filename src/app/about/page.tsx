@@ -1,40 +1,35 @@
 import React from 'react';
-import { Section } from '@/components/shared/Section';
-import { Container } from '@/components/shared/Container';
-import { Typography } from '@/components/shared/Typography';
+import { AboutHero } from '@/components/about/AboutHero';
+import { StorySection } from '@/components/about/StorySection';
+import { FounderSection } from '@/components/home/FounderSection';
+import { FacultyGrid } from '@/components/about/FacultyGrid';
+import { Timeline } from '@/components/about/Timeline';
+import { WhyUs } from '@/components/why-us/WhyUs';
+import { GalleryPreview } from '@/components/home/GalleryPreview';
+import { CallToAction } from '@/components/cta/CallToAction';
 
 export default function AboutPage() {
     return (
         <main>
-            <Section className="py-12">
-                <Container>
-                    <Typography variant="h1" className="mb-8 text-center md:text-left">About Us</Typography>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                        gap: '3rem',
-                        alignItems: 'center'
-                    }}>
-                        <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-                            <img
-                                src="/images/about/about-classroom.png"
-                                alt="About VDCC"
-                                style={{ width: '100%', height: 'auto', display: 'block' }}
-                            />
-                        </div>
-
-                        <div className="about-content">
-                            <Typography variant="h3" className="mb-4">Our Mission</Typography>
-                            <Typography variant="body">
-                                At Varun Dev Coaching Center (VDCC), we are committed to providing high-quality education that empowers students to achieve their full potential. Our holistic approach ensures that every student receives personalized attention and expert guidance.
-                            </Typography>
-                            <Typography variant="body">
-                                With years of experience and a track record of success, our faculty is dedicated to nurturing young minds and building a strong foundation for their future academic and professional endeavors.
-                            </Typography>
-                        </div>
+            <AboutHero />
+            <StorySection />
+            <FounderSection />
+            
+            {/* The Mission & Values utilizing the Homepage WhyUs framework which maps perfectly */}
+            <div className="relative">
+                <div className="absolute top-10 left-0 right-0 text-center z-20 pointer-events-none hidden lg:block">
+                    {/* A visual marker to bridge sections */}
+                    <div className="inline-block px-6 py-2 rounded-full bg-accent-primary text-white font-bold tracking-widest text-sm shadow-xl shadow-accent-primary/30">
+                        OUR CORE METHODOLOGY
                     </div>
-                </Container>
-            </Section>
+                </div>
+                <WhyUs />
+            </div>
+
+            <FacultyGrid />
+            <Timeline />
+            <GalleryPreview />
+            <CallToAction />
         </main>
     );
 }

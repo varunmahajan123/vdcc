@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
+import { FloatingWhatsApp } from "@/components/cta/FloatingWhatsApp";
+import { AuthProvider } from "@/lib/firebase/AuthContext";
+import { Toaster } from "react-hot-toast";
+import { siteMetadata } from "@/config/metadata";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,10 +15,13 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Varun Dev Coaching Center",
-  description: "Empowering Education. Enabling Excellence.",
-};
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -22,12 +29,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.variable}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <ChatWidget />
+    <html lang="en" className={`${inter.variable} ${outfit.variable} dark`}>
+      <body className="antialiased min-h-screen flex flex-col bg-bg-primary text-text-primary">
+        <AuthProvider>
+          <Toaster 
+            position="top-center" 
+            toastOptions={{
+              style: {
+                background: '#1E293B',
+                color: '#F8FAFC',
+                border: '1px solid #334155'
+              }
+            }} 
+          />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <FloatingWhatsApp />
+          <ChatWidget />
+        </AuthProvider>
       </body>
     </html>
   );

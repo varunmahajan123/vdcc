@@ -1,17 +1,18 @@
 import { NextResponse } from "next/server";
+import { brand } from "@/config/brand";
 
 export const runtime = "nodejs";
 
 const INSTITUTE_CONTEXT = `
 Institute Name:
-Varun Dev Coaching Center (VDCC)
+${brand.name} (${brand.shortName})
 
 Location:
-A1 West Kashmir Avenue, Amritsar, Punjab
+${brand.contact.address}
 
 Contact:
-Phone: 9915255710
-Email: varundev26081982@gmail.com
+Phone: ${brand.contact.primaryPhone}, ${brand.contact.secondaryPhone}
+Email: ${brand.contact.primaryEmail}, ${brand.contact.secondaryEmail}
 
 Classes Offered:
 • Playpen / Pre-Primary

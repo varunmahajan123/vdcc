@@ -1,8 +1,7 @@
 import React from "react";
-import styles from "./Card.module.css";
 import { cn } from "@/lib/utils";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
     hover?: boolean;
 }
 
@@ -11,7 +10,11 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         return (
             <div
                 ref={ref}
-                className={cn(styles.card, hover && styles.hover, className)}
+                className={cn(
+                    "bg-bg-secondary rounded-2xl border border-border overflow-hidden",
+                    hover && "transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20",
+                    className
+                )}
                 {...props}
             >
                 {children}

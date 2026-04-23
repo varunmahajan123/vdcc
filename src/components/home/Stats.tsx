@@ -4,14 +4,16 @@ import styles from "./Home.module.css";
 
 export function Stats() {
     return (
-        <Section bg="secondary">
-            <div className={styles.statsGrid}>
-                {stats.map((stat, i) => (
-                    <div key={i}>
-                        <div className={styles.statValue}>{stat.value}</div>
-                        <div className={styles.statLabel}>{stat.label}</div>
-                    </div>
-                ))}
+        <Section className="bg-bg-secondary border-y border-white/5">
+            <div className="container">
+                <div className={styles.statsGrid}>
+                    {stats.map((stat, i) => (
+                        <div key={i} className={styles.statCard}>
+                            <div className={styles.statValue}>{stat.value}</div>
+                            <div className={styles.statLabel}>{stat.label}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </Section>
     );

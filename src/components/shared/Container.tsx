@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './Shared.module.css';
+import { cn } from '@/lib/utils';
 
-interface ContainerProps {
+export interface ContainerProps {
     children: React.ReactNode;
     className?: string;
 }
 
 export const Container: React.FC<ContainerProps> = ({ children, className }) => {
     return (
-        <div className={`${styles.container} ${className || ''}`}>
+        <div className={cn("container", className)}>
             {children}
         </div>
     );

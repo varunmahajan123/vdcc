@@ -7,6 +7,10 @@ export function Hero() {
         <section className={styles.hero}>
             <div className="container">
                 <div className={styles.heroContent}>
+                    <div className={styles.heroBadge}>
+                        <span className={styles.badgePulse} />
+                        Amritsar's Premier Coaching Institute
+                    </div>
                     <h1 className={styles.heroTitle}>{siteConfig.name}</h1>
                     <p className={styles.heroTagline}>{siteConfig.tagline}</p>
                     <p className={styles.heroDescription}>{siteConfig.description}</p>
@@ -21,6 +25,7 @@ export function Hero() {
                 </div>
             </div>
             <div className={styles.heroGlow} />
+            <div className={styles.heroOverlay} />
         </section>
     );
 }

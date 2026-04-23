@@ -1,15 +1,14 @@
 import React from 'react';
-import styles from './Shared.module.css';
+import { cn } from '@/lib/utils';
 
-interface SectionProps {
+export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
     children: React.ReactNode;
     className?: string;
-    id?: string;
 }
 
-export const Section: React.FC<SectionProps> = ({ children, className, id }) => {
+export const Section: React.FC<SectionProps> = ({ children, className, ...props }) => {
     return (
-        <section id={id} className={`${styles.section} ${className || ''}`}>
+        <section className={cn("section", className)} {...props}>
             {children}
         </section>
     );
