@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
 import { FloatingWhatsApp } from "@/components/cta/FloatingWhatsApp";
+import { MobileBottomBar } from "@/components/cta/MobileBottomBar";
 import { AuthProvider } from "@/lib/firebase/AuthContext";
 import { Toaster } from "react-hot-toast";
 import { siteMetadata } from "@/config/metadata";
@@ -30,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} dark`}>
-      <body className="antialiased min-h-screen flex flex-col bg-bg-primary text-text-primary">
+      <body className="antialiased min-h-screen flex flex-col bg-bg-primary text-text-primary pb-16 md:pb-0">
         <AuthProvider>
           <Toaster 
             position="top-center" 
@@ -47,6 +48,7 @@ export default function RootLayout({
           <Footer />
           <FloatingWhatsApp />
           <ChatWidget />
+          <MobileBottomBar />
         </AuthProvider>
       </body>
     </html>
