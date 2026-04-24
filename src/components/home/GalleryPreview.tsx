@@ -22,7 +22,8 @@ export const GalleryPreview = () => {
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-[10px] uppercase tracking-widest font-bold mb-6">
                         Campus Culture
                     </div>
-                    <Typography variant="h2" className="mb-6 tracking-tighter">Inside VDCC</Typography>
+                    <Typography variant="h2" className="mb-0 tracking-tighter">Inside VDCC</Typography>
+                    <div className="w-[40px] h-[3px] bg-[#2563EB] rounded-[2px] mx-auto mt-[10px] mb-6" />
                     <Typography variant="body" className="mb-10 opacity-80">
                         Vibrant classrooms, peaceful study zones, and a culture of academic celebration.
                     </Typography>

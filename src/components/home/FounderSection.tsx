@@ -9,7 +9,7 @@ import { Quote } from 'lucide-react';
 
 export const FounderSection = () => {
     return (
-        <Section className="bg-bg-primary overflow-hidden relative py-10 md:py-12">
+        <Section className="bg-bg-primary overflow-hidden relative py-14 md:py-20">
             {/* Background cinematic effects */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
             
@@ -46,9 +46,10 @@ export const FounderSection = () => {
                         transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col items-center max-w-2xl mx-auto"
                     >
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-[10px] uppercase tracking-widest font-bold mb-3 shadow-sm">
+                        <h2 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-[10px] uppercase tracking-widest font-bold mb-0 shadow-sm">
                             From the Founder’s Desk
-                        </div>
+                        </h2>
+                        <div className="w-[40px] h-[3px] bg-[#2563EB] rounded-[2px] mt-[10px] mb-3 mx-auto" />
                         
                         <Quote className="text-accent-primary opacity-20 w-6 h-6 mb-3" />
                         

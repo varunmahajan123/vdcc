@@ -6,11 +6,8 @@ import { brand } from "./brand";
  * Used in root layout — pages can override with their own metadata export.
  */
 export const siteMetadata: Metadata = {
-  title: {
-    default: `${brand.name} — ${brand.tagline}`,
-    template: `%s | ${brand.shortName}`,
-  },
-  description: brand.description,
+  title: "Best Coaching Centre in Amritsar | VDCC — Varun Dev Coaching Centre",
+  description: "Amritsar's most trusted coaching institute for Class 1 to 10. Concept-based learning, small batches, experienced faculty. 10,000+ students. Enroll at VDCC today.",
   keywords: [
     "coaching centre amritsar",
     "VDCC",
@@ -30,8 +27,8 @@ export const siteMetadata: Metadata = {
     locale: "en_IN",
     siteName: brand.name,
     title: `${brand.name} — ${brand.tagline}`,
-    description: brand.description,
-    // images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    description: "Amritsar's most trusted coaching institute for Class 1 to 10. Concept-based learning, small batches, experienced faculty. 10,000+ students. Enroll at VDCC today.",
+    images: [{ url: "/images/logo/logo.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -49,18 +46,26 @@ export const siteMetadata: Metadata = {
 
 /**
  * Helper to create page-specific metadata.
- * Usage: export const metadata = createPageMetadata({ title: "About", description: "..." });
  */
 export function createPageMetadata(
-  overrides: Partial<Metadata> & { title: string }
+  overrides: Partial<Metadata> & { title: string; path?: string }
 ): Metadata {
   return {
     ...overrides,
-    title: overrides.title, // uses template from root layout
+    title: overrides.title,
+    description: overrides.description || siteMetadata.description,
+    alternates: {
+      canonical: overrides.path ? `https://vdcc.in${overrides.path}` : "https://vdcc.in",
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
       ...siteMetadata.openGraph,
-      title: `${overrides.title} | ${brand.shortName}`,
-      description: overrides.description?.toString() || brand.description,
+      title: overrides.title,
+      description: overrides.description?.toString() || siteMetadata.description?.toString(),
+      images: [{ url: "/images/logo/logo.png", width: 1200, height: 630 }],
       ...overrides.openGraph,
     },
   };

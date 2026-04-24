@@ -1,4 +1,12 @@
 import React from 'react';
+import { createPageMetadata } from '@/config/metadata';
+
+export const metadata = createPageMetadata({
+  title: "Contact VDCC | Coaching Centre in Amritsar | Enroll Now",
+  description: "Contact Varun Dev Coaching Centre for admissions and enquiries. Call 9915255710 or WhatsApp us. A1 West Kashmir Avenue, Amritsar.",
+  path: "/contact",
+});
+
 import { Section } from '@/components/shared/Section';
 import { Container } from '@/components/shared/Container';
 import { Typography } from '@/components/shared/Typography';

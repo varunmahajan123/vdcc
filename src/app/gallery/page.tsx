@@ -1,4 +1,12 @@
 import React from 'react';
+import { createPageMetadata } from '@/config/metadata';
+
+export const metadata = createPageMetadata({
+  title: "VDCC Campus Gallery | Classrooms, Events & More | Amritsar",
+  description: "Explore VDCC's vibrant campus, classrooms, result celebrations, and academic culture. Amritsar's premier coaching institute since 1999.",
+  path: "/gallery",
+});
+
 import { Section } from '@/components/shared/Section';
 import { Container } from '@/components/shared/Container';
 import { Typography } from '@/components/shared/Typography';

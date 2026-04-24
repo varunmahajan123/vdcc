@@ -1,4 +1,12 @@
 import React from 'react';
+import { createPageMetadata } from '@/config/metadata';
+
+export const metadata = createPageMetadata({
+  title: "Coaching Classes in Amritsar | Playpen to Class 10 | VDCC",
+  description: "Explore VDCC's structured coaching programs from Playpen & Pre-Primary to Class 10 board preparation. Small batches, personalized attention. Amritsar.",
+  path: "/courses",
+});
+
 import { Section } from '@/components/shared/Section';
 import { Container } from '@/components/shared/Container';
 import { Typography } from '@/components/shared/Typography';

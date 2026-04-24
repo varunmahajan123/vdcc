@@ -13,7 +13,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 const variantStyles = {
     primary: "bg-accent-primary text-slate-950 shadow-[0_5px_15px_rgba(56,189,248,0.2)] hover:bg-white hover:shadow-[0_8px_25px_rgba(255,255,255,0.2)] border border-transparent",
     secondary: "bg-accent-cta text-slate-950 shadow-[0_5px_15px_rgba(251,191,36,0.2)] hover:bg-white hover:shadow-[0_8px_25px_rgba(255,255,255,0.2)] border border-transparent",
-    outline: "border border-white/20 text-white hover:bg-white hover:text-slate-950 hover:border-white",
+    outline: "border border-white/20 text-white hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB]",
     ghost: "text-text-secondary hover:text-text-primary hover:bg-white/5",
 };
 
