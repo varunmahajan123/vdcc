@@ -49,7 +49,7 @@ const courseData = [
         title: "Class 9 & 10 (Secondary)",
         overview: "Rigorous, highly-focused, and incredibly systematic board examination preparation. Weekly mock tests, intensive doubt clearing, and strict syllabus completion.",
         subjects: ["Board Level Mathematics", "Physics, Chemistry, Biology", "Social Sciences", "English Literature & Grammar"],
-        keyBenefit: "Guarantees maximum board exam performance.",
+        keyBenefit: "Designed for maximum board exam performance.",
         timing: "Evening Intensive Batches",
         imageSrc: "/images/courses/secondary-classroom.jpeg"
     }

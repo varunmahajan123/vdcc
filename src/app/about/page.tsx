@@ -1,11 +1,10 @@
 import React from 'react';
 import { createPageMetadata } from '@/config/metadata';
 
-export const metadata = createPageMetadata({
-  title: "About VDCC | 25+ Years of Educational Excellence | Amritsar",
-  description: "Learn about Varun Dev Coaching Centre's 25-year legacy in Amritsar. Expert faculty, proven methodology, and 10,000+ success stories since 1999.",
-  path: "/about",
-});
+export const metadata = {
+  title: 'About VDCC | 25 Years of Academic Excellence in Amritsar',
+  description: 'Founded by Mrs. Bharti Mahajan in 1999, VDCC has guided 10,000+ students. Learn about our concept-based teaching philosophy and experienced faculty.',
+};
 
 import { AboutHero } from '@/components/about/AboutHero';
 import { StorySection } from '@/components/about/StorySection';

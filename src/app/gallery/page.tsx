@@ -1,11 +1,10 @@
 import React from 'react';
 import { createPageMetadata } from '@/config/metadata';
 
-export const metadata = createPageMetadata({
-  title: "VDCC Campus Gallery | Classrooms, Events & More | Amritsar",
-  description: "Explore VDCC's vibrant campus, classrooms, result celebrations, and academic culture. Amritsar's premier coaching institute since 1999.",
-  path: "/gallery",
-});
+export const metadata = {
+  title: 'Campus Gallery | VDCC — Varun Dev Coaching Centre Amritsar',
+  description: 'Take a virtual tour of VDCC Amritsar. Modern classrooms, premium reception, student celebrations, and faculty in action.',
+};
 
 import { Section } from '@/components/shared/Section';
 import { Container } from '@/components/shared/Container';

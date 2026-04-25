@@ -2,6 +2,23 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+/* 
+  IMPORTANT: After any new deployment, add the deployment URL to:
+  Firebase Console → Authentication → Settings → Authorized Domains
+  Currently needed: vdcc-web.vercel.app
+  Without this, all auth methods will silently fail on production.
+*/
+
+const requiredVars = [
+  'NEXT_PUBLIC_FIREBASE_API_KEY',
+  'NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN', 
+  'NEXT_PUBLIC_FIREBASE_PROJECT_ID'
+];
+const missingVars = requiredVars.filter(v => !process.env[v]);
+if (missingVars.length > 0) {
+  console.error('Missing Firebase env vars:', missingVars);
+}
+
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,

@@ -36,8 +36,9 @@ export default function RootLayout({
     "alternateName": "VDCC",
     "url": "https://vdcc-web.vercel.app",
     "logo": "https://vdcc-web.vercel.app/images/logo/logo.png",
-    "description": "Amritsar's most trusted coaching centre offering concept-based learning from Playpen to Class 10 with experienced faculty and personalized mentoring.",
-    "foundingDate": "1999",
+    "description": "Concept-based coaching from Playpen to Class 10 in Amritsar, Punjab",
+    "telephone": ["+919915255710", "+919217659069"],
+    "email": "vdcc0786@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "A1 West Kashmir Avenue",
@@ -45,20 +46,9 @@ export default function RootLayout({
       "addressRegion": "Punjab",
       "addressCountry": "IN"
     },
-    "telephone": ["+919915255710", "+919217659069"],
-    "email": "varundev26081982@gmail.com",
-    "areaServed": {
-      "@type": "City",
-      "name": "Amritsar"
-    },
-    "numberOfEmployees": {
-      "@type": "QuantitativeValue",
-      "value": 15
-    },
-    "sameAs": [
-      brand.social.facebook,
-      brand.social.instagram
-    ]
+    "founder": {"@type": "Person", "name": "Mrs. Bharti Mahajan"},
+    "foundingDate": "1999",
+    "sameAs": ["https://www.instagram.com/vdcc__official/"]
   };
 
   return (

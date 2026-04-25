@@ -70,7 +70,14 @@ export default function LoginPage() {
             toast.success("Google Sign-In Successful!");
             await handleRoleRouting(result.user.uid);
         } catch (error: any) {
-            toast.error(error.message);
+            console.error('Auth error:', error.code, error.message);
+            if (error.code === 'auth/invalid-app-credential') {
+                toast.error('Configuration error. Please contact admin.');
+            } else if (error.code === 'auth/too-many-requests') {
+                toast.error('Too many attempts. Please try again in a few minutes.');
+            } else {
+                toast.error('Login failed: ' + error.message);
+            }
             setLoading(false);
         }
     };

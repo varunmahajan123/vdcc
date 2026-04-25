@@ -1,11 +1,14 @@
 import React from 'react';
 import { createPageMetadata } from '@/config/metadata';
 
-export const metadata = createPageMetadata({
-  title: "VDCC Student Results | Class 10 Board Toppers | Amritsar",
-  description: "See real results from VDCC students. Consistent Class 10 board toppers scoring 90%+ year after year. Amritsar's most result-oriented coaching centre.",
-  path: "/results",
-});
+export const metadata = {
+  title: 'Student Results 2025-26 | VDCC — Varun Dev Coaching Centre Amritsar',
+  description: 'VDCC Class 10 Board Results 2025: Rahat 97%, Daivik 96%, Ritika 96%, Mehakdeep 96% and 20+ toppers. Real students, verified results. Admissions open for 2026-27.',
+  openGraph: {
+    title: 'VDCC Results — Amritsar Class 10 Toppers 2025',
+    description: 'See our verified Class 10 board results. Top scorers trained at Varun Dev Coaching Centre, Amritsar.',
+  }
+};
 
 import { ResultsGallery } from '@/components/results/ResultsGallery';
 import { brand } from '@/config/brand';
