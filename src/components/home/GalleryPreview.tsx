@@ -11,7 +11,7 @@ const galleryImages = [
     { src: '/images/gallery/gallery-1.png', alt: 'Classroom teaching' },
     { src: '/images/gallery/gallery-2.png', alt: 'Front office' },
     { src: '/images/gallery/gallery-3.png', alt: 'Student celebration' },
-    { src: '/images/gallery/gallery-4.png', alt: 'Mentoring session' } // Assuming a 4th might exist or fallback
+    { src: '/images/gallery/gallery-5.jpg', alt: 'Students studying together in a small batch' },
 ];
 
 export const GalleryPreview = () => {

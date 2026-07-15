@@ -17,15 +17,13 @@ export type GalleryImage = {
     aspectRatio: "square" | "landscape" | "portrait";
 };
 
-// Admin Mock Payload
+// Gallery images — all entries point to unique files in /public/images/gallery/
 const mockGallery: GalleryImage[] = [
     { id: "1", src: "/images/gallery/gallery-1.png", alt: "Modern VDCC Classroom", category: "Classrooms", aspectRatio: "landscape" },
     { id: "2", src: "/images/gallery/gallery-2.png", alt: "Reception and Front Office", category: "Office & Reception", aspectRatio: "landscape" },
     { id: "3", src: "/images/gallery/gallery-3.png", alt: "Annual Function Celebration", category: "Celebrations", aspectRatio: "portrait" },
-    { id: "4", src: "/images/gallery/gallery-4.png", alt: "Interactive Mentoring Session", category: "Faculty", aspectRatio: "square" },
-    { id: "5", src: "/images/gallery/gallery-1.png", alt: "Science Activity Lab", category: "Student Activities", aspectRatio: "landscape" },
-    { id: "6", src: "/images/gallery/gallery-2.png", alt: "Backlit VDCC Logo Office", category: "Office & Reception", aspectRatio: "square" },
-    { id: "7", src: "/images/gallery/gallery-3.png", alt: "Student Cultural Program", category: "Events", aspectRatio: "portrait" },
+    { id: "4", src: "/images/gallery/gallery-4.jpg", alt: "VDCC Building Exterior at Dusk", category: "Office & Reception", aspectRatio: "portrait" },
+    { id: "5", src: "/images/gallery/gallery-5.jpg", alt: "Students Studying Together in a Small Batch", category: "Student Activities", aspectRatio: "portrait" },
 ];
 
 const categories: GalleryCategory[] = [

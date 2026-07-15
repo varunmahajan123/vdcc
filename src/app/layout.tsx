@@ -46,9 +46,13 @@ export default function RootLayout({
       "addressRegion": "Punjab",
       "addressCountry": "IN"
     },
+    "areaServed": "Amritsar",
     "founder": {"@type": "Person", "name": "Mrs. Bharti Mahajan"},
     "foundingDate": "1999",
-    "sameAs": ["https://www.instagram.com/vdcc__official/"]
+    "sameAs": [
+      "https://www.instagram.com/vdcc__official/",
+      "https://www.facebook.com/share/1bajwcuwTF/?mibextid=wwXIfr"
+    ]
   };
 
   return (

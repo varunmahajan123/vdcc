@@ -13,6 +13,7 @@ export const mainNav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Courses", href: "/courses" },
   { label: "About", href: "/about" },
+  { label: "Why VDCC", href: "/why-vdcc" },
   { label: "Results", href: "/results" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
